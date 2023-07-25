@@ -45,11 +45,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // разница между deatLine и текущ. временем
     function getTimeRemaining(endTime) {
-        const t = Date.parse(endTime) - Date.parse(new Date()),
+        let days, hours, mins, secs;
+
+        const t = Date.parse(endTime) - Date.parse(new Date());
+
+        if (t <= 0) {
+            days = 0;
+            hours = 0;
+            mins = 0;
+            secs = 0;
+        } else {
             days = Math.floor(t / (1000 * 60 * 60 * 24)), // Кол-во дней.  миллисекунд в сутках
-            hours = Math.floor((t / (1000 * 60 * 60) % 24)),
-            mins = Math.floor((t / 1000 / 60) % 60),
-            secs = Math.floor((t / 1000) % 60);
+                hours = Math.floor((t / (1000 * 60 * 60) % 24)),
+                mins = Math.floor((t / 1000 / 60) % 60),
+                secs = Math.floor((t / 1000) % 60);
+        }
 
         return {
             'total': t,
