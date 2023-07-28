@@ -152,6 +152,56 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    window.addEventListener('scroll', showModalByScroll)
+    window.addEventListener('scroll', showModalByScroll);
+
+
+    /////////////////////////////////////////////////
+    // Forms
+    /////////////////////////////////////////////////
+    const forms = document.querySelectorAll('form');
+    const message = {
+        loading: 'Загрузка',
+        success: 'Спасибо! С вами свяжутся.',
+        failure: 'Что-то пошло не так...'
+    }
+
+    forms.forEach(form => {
+        postData(form)
+    })
+
+    function postData(form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const statusMessage = document.createElement('div');
+            statusMessage.classList.add('status');
+            statusMessage.textContent = message.loading;
+            form.append(statusMessage)
+
+            const request = new XMLHttpRequest();
+            request.open('POST', 'http://localhost:8000/server.php');
+            //request.setRequestHeader('Content-type', 'multipart/form-data')
+            request.setRequestHeader('Content-Type', 'application/json')
+
+            const formData = new FormData(form);
+            const object = {};
+            formData.forEach((value, key) => {
+                object[key] = value
+            })
+
+            const json = JSON.stringify(object)
+            request.send(json);
+
+            request.addEventListener('load', () => {
+                if (request.status === 200) {
+                    console.log(request.response)
+                    statusMessage.textContent = message.success;
+                    form.reset();
+                } else {
+                    statusMessage.textContent = message.failure;
+                }
+            })
+        })
+    }
 
 })
