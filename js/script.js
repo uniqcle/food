@@ -168,7 +168,8 @@ window.addEventListener('DOMContentLoaded', () => {
     forms.forEach(form => {
         postData(form)
     })
-
+    /*with XMLHttpRequest */
+    /*
     function postData(form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -205,6 +206,48 @@ window.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
+    */
+
+    /* with fetch */
+    function postData(form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const statusMessage = document.createElement('img');
+            statusMessage.src = message.loading;
+            statusMessage.style.cssText = `display: block; margin: 0 auto; `;
+            form.append(statusMessage)
+
+            const formData = new FormData(form);
+            const object = {};
+            formData.forEach((value, key) => {
+                object[key] = value
+            })
+
+            const json = JSON.stringify(object)
+
+            fetch('http://localhost:8000/server.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: json
+            })
+                .then(data => data.text())
+                .then((data) => {
+                    console.log(data)
+                    //statusMessage.textContent = message.success;
+                    showThanksModal(message.success)
+                })
+                .catch(() => {
+                    showThanksModal(message.failure)
+                })
+                .finally(() => {
+                    form.reset();
+                });
+
+        })
+    }
 
 
     function showThanksModal(message) {
@@ -230,5 +273,8 @@ window.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }, 4000)
     }
+
+
+
 
 })
