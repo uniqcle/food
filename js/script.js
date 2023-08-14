@@ -152,7 +152,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    window.addEventListener('scroll', showModalByScroll);
+    //window.addEventListener('scroll', showModalByScroll);
 
 
     /////////////////////////////////////////////////
