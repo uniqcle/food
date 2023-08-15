@@ -1,4 +1,34 @@
+import Menu from './menuClass.js';
+
 window.addEventListener('DOMContentLoaded', () => {
+    /////////////////////////////////////////////////
+    // Menu
+    /////////////////////////////////////////////////
+    const menuItemContainer = document.querySelector('#menuItemContainer')
+
+    const getData = async (url) => {
+        const res = await fetch(url)
+        if (!res.ok) {
+            throw new Error(`Ошибка запроса данных по адресу ${url}, status: ${res.status}`)
+        }
+
+        return await res.json();
+    }
+
+    getData('http://localhost:3000/menu')
+        .then(data => {
+
+            data.forEach(dataItem => {
+                const menu = new Menu(dataItem).render();
+                menuItemContainer.insertAdjacentHTML('beforeend', menu)
+            })
+
+        })
+
+    axios.get('http://localhost:3000/menu')
+        .then(data => console.log(data))
+
+
     /////////////////////////////////////////////////
     // Tabs
     /////////////////////////////////////////////////
@@ -231,7 +261,7 @@ window.addEventListener('DOMContentLoaded', () => {
             form.append(statusMessage)
 
             const formData = new FormData(form);
-            
+
             const object = {};
             formData.forEach((value, key) => {
                 object[key] = value

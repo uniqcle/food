@@ -16,7 +16,7 @@ class Menu {
 
         return `
         <div class="menu__item">
-                    <img src="img/tabs/${this.img}.jpg" alt="elite">
+                    <img src="${this.img}" alt="elite">
                     <h3 class="menu__item-subtitle">${this.title}</h3>
                     <div class="menu__item-descr">${this.desc}</div>
                     <div class="menu__item-divider"></div>
