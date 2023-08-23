@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
         })
 
     axios.get('http://localhost:3000/menu')
-        .then(data => console.log(data))
+        .then(data => { })
 
 
     /////////////////////////////////////////////////
@@ -307,7 +307,7 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     // открываем модальн. окное по истечении 2 сек. 
-    const modalTimerId = setTimeout(openModal, 2000);
+    //const modalTimerId = setTimeout(openModal, 2000);
 
     function showModalByScroll() {
         if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) { // означает что пользователь долистал до конца страницы.
