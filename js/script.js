@@ -20,6 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             data.forEach(dataItem => {
                 const menu = new Menu(dataItem).render();
+
                 menuItemContainer.insertAdjacentHTML('beforeend', menu)
             })
 

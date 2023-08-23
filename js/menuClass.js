@@ -1,7 +1,7 @@
 class Menu {
-    constructor({ title, desc, price, img }) {
+    constructor({ title, descr, price, img }) {
         this.title = title;
-        this.desc = desc;
+        this.desc = descr;
         this.price = price;
         this.img = img,
             this.priceRate = 2;
@@ -13,6 +13,8 @@ class Menu {
 
     render() {
         const price = this.changeRUB();
+
+
 
         return `
         <div class="menu__item">
