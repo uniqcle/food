@@ -1,4 +1,5 @@
 //import Menu from './menuClass.js';
+import { getData } from '../services/services';
 
 class Menu {
     constructor({ title, descr, price, img }) {
@@ -39,15 +40,6 @@ function cards() {
     /////////////////////////////////////////////////
     const menuItemContainer = document.querySelector('#menuItemContainer')
 
-    const getData = async (url) => {
-        const res = await fetch(url)
-        if (!res.ok) {
-            throw new Error(`Ошибка запроса данных по адресу ${url}, status: ${res.status}`)
-        }
-
-        return await res.json();
-    }
-
     getData('http://localhost:3000/menu')
         .then(data => {
 
@@ -63,4 +55,4 @@ function cards() {
         .then(data => { })
 }
 
-module.exports = cards; 
+export default cards; 

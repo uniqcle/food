@@ -1,12 +1,17 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./js/modules/calc.js":
 /*!****************************!*\
   !*** ./js/modules/calc.js ***!
   \****************************/
-/***/ ((module) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 function calc() {
     /////////////////////////////////////////////////
     // Calculator 
@@ -126,7 +131,7 @@ function calc() {
     getDynamicInformation('#age')
 }
 
-module.exports = calc; 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calc); 
 
 /***/ }),
 
@@ -134,9 +139,15 @@ module.exports = calc;
 /*!*****************************!*\
   !*** ./js/modules/cards.js ***!
   \*****************************/
-/***/ ((module) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./js/services/services.js");
 //import Menu from './menuClass.js';
+
 
 class Menu {
     constructor({ title, descr, price, img }) {
@@ -177,16 +188,7 @@ function cards() {
     /////////////////////////////////////////////////
     const menuItemContainer = document.querySelector('#menuItemContainer')
 
-    const getData = async (url) => {
-        const res = await fetch(url)
-        if (!res.ok) {
-            throw new Error(`Ошибка запроса данных по адресу ${url}, status: ${res.status}`)
-        }
-
-        return await res.json();
-    }
-
-    getData('http://localhost:3000/menu')
+    ;(0,_services_services__WEBPACK_IMPORTED_MODULE_0__.getData)('http://localhost:3000/menu')
         .then(data => {
 
             data.forEach(dataItem => {
@@ -201,7 +203,7 @@ function cards() {
         .then(data => { })
 }
 
-module.exports = cards; 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (cards); 
 
 /***/ }),
 
@@ -209,7 +211,14 @@ module.exports = cards;
 /*!*****************************!*\
   !*** ./js/modules/forms.js ***!
   \*****************************/
-/***/ ((module) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./js/services/services.js");
+
 
 function forms() {
     /////////////////////////////////////////////////
@@ -225,57 +234,7 @@ function forms() {
     forms.forEach(form => {
         bindPostData(form)
     })
-    /*with XMLHttpRequest */
-    /*
-    function postData(form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
 
-            const statusMessage = document.createElement('img');
-            statusMessage.src = message.loading;
-            statusMessage.style.cssText = `display: block; margin: 0 auto; `;
-            form.append(statusMessage)
-
-            const request = new XMLHttpRequest();
-            request.open('POST', 'http://localhost:8000/server.php');
-            //request.setRequestHeader('Content-type', 'multipart/form-data')
-            request.setRequestHeader('Content-Type', 'application/json')
-
-            const formData = new FormData(form);
-            const object = {};
-            formData.forEach((value, key) => {
-                object[key] = value
-            })
-
-            const json = JSON.stringify(object)
-            request.send(json);
-
-            request.addEventListener('load', () => {
-                if (request.status === 200) {
-                    console.log(request.response)
-                    //statusMessage.textContent = message.success;
-                    showThanksModal(message.success)
-                    form.reset();
-                } else {
-                    //statusMessage.textContent = message.failure;
-                    showThanksModal(message.failure)
-                }
-            })
-        })
-    }
-    */
-
-    const postData = async (url, data) => {
-        const result = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: data
-        });
-
-        return await result.json();
-    }
 
     /* with fetch */
     function bindPostData(form) {
@@ -296,7 +255,7 @@ function forms() {
 
             const json = JSON.stringify(object)
 
-            postData('  http://localhost:3000/requests', json)
+            ;(0,_services_services__WEBPACK_IMPORTED_MODULE_0__.postData)('  http://localhost:3000/requests', json)
                 .then((data) => {
                     console.log(data)
                     //statusMessage.textContent = message.success;
@@ -338,7 +297,7 @@ function forms() {
     }
 }
 
-module.exports = forms; 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (forms); 
 
 /***/ }),
 
@@ -346,8 +305,12 @@ module.exports = forms;
 /*!******************************!*\
   !*** ./js/modules/modals.js ***!
   \******************************/
-/***/ ((module) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 function modals() {
     /////////////////////////////////////////////////
     // Modal 
@@ -403,7 +366,7 @@ function modals() {
 
 }
 
-module.exports = modals; 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modals); 
 
 /***/ }),
 
@@ -411,8 +374,12 @@ module.exports = modals;
 /*!******************************!*\
   !*** ./js/modules/slider.js ***!
   \******************************/
-/***/ ((module) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 function slider() {
 
     /*
@@ -549,7 +516,7 @@ function slider() {
     })
 }
 
-module.exports = slider; 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (slider); 
 
 /***/ }),
 
@@ -557,8 +524,12 @@ module.exports = slider;
 /*!****************************!*\
   !*** ./js/modules/tabs.js ***!
   \****************************/
-/***/ ((module) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 function tabs() {
     /////////////////////////////////////////////////
     // Tabs
@@ -601,7 +572,7 @@ function tabs() {
 
 }
 
-module.exports = tabs; 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tabs); 
 
 /***/ }),
 
@@ -609,8 +580,12 @@ module.exports = tabs;
 /*!*****************************!*\
   !*** ./js/modules/timer.js ***!
   \*****************************/
-/***/ ((module) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 function timer() {
     /////////////////////////////////////////////////
     // Timer
@@ -677,7 +652,83 @@ function timer() {
 
 }
 
-module.exports = timer; 
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (timer); 
+
+/***/ }),
+
+/***/ "./js/services/services.js":
+/*!*********************************!*\
+  !*** ./js/services/services.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getData: () => (/* binding */ getData),
+/* harmony export */   postData: () => (/* binding */ postData)
+/* harmony export */ });
+/*with XMLHttpRequest */
+/*
+function postData(form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const statusMessage = document.createElement('img');
+        statusMessage.src = message.loading;
+        statusMessage.style.cssText = `display: block; margin: 0 auto; `;
+        form.append(statusMessage)
+
+        const request = new XMLHttpRequest();
+        request.open('POST', 'http://localhost:8000/server.php');
+        //request.setRequestHeader('Content-type', 'multipart/form-data')
+        request.setRequestHeader('Content-Type', 'application/json')
+
+        const formData = new FormData(form);
+        const object = {};
+        formData.forEach((value, key) => {
+            object[key] = value
+        })
+
+        const json = JSON.stringify(object)
+        request.send(json);
+
+        request.addEventListener('load', () => {
+            if (request.status === 200) {
+                console.log(request.response)
+                //statusMessage.textContent = message.success;
+                showThanksModal(message.success)
+                form.reset();
+            } else {
+                //statusMessage.textContent = message.failure;
+                showThanksModal(message.failure)
+            }
+        })
+    })
+}
+*/
+
+const postData = async (url, data) => {
+    const result = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data
+    });
+
+    return await result.json();
+}
+
+const getData = async (url) => {
+    const res = await fetch(url)
+    if (!res.ok) {
+        throw new Error(`Ошибка запроса данных по адресу ${url}, status: ${res.status}`)
+    }
+
+    return await res.json();
+}
+
+
 
 /***/ })
 
@@ -708,30 +759,66 @@ module.exports = timer;
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 /*!**********************!*\
   !*** ./js/script.js ***!
   \**********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/tabs */ "./js/modules/tabs.js");
+/* harmony import */ var _modules_cards__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/cards */ "./js/modules/cards.js");
+/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ "./js/modules/slider.js");
+/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/timer */ "./js/modules/timer.js");
+/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/modals */ "./js/modules/modals.js");
+/* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/forms */ "./js/modules/forms.js");
+/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/calc */ "./js/modules/calc.js");
+
+
+
+
+
+
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    const tabs = __webpack_require__(/*! ./modules/tabs */ "./js/modules/tabs.js"),
-        cards = __webpack_require__(/*! ./modules/cards */ "./js/modules/cards.js"),
-        slider = __webpack_require__(/*! ./modules/slider */ "./js/modules/slider.js"),
-        timer = __webpack_require__(/*! ./modules/timer */ "./js/modules/timer.js"),
-        modals = __webpack_require__(/*! ./modules/modals */ "./js/modules/modals.js"),
-        forms = __webpack_require__(/*! ./modules/forms */ "./js/modules/forms.js"),
-        calc = __webpack_require__(/*! ./modules/calc */ "./js/modules/calc.js");
 
-    tabs();
-    cards();
-    slider();
-    timer();
-    modals();
-    forms();
-    calc();
+    (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])();
+    (0,_modules_cards__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    (0,_modules_slider__WEBPACK_IMPORTED_MODULE_2__["default"])();
+    (0,_modules_timer__WEBPACK_IMPORTED_MODULE_3__["default"])();
+    (0,_modules_modals__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    (0,_modules_forms__WEBPACK_IMPORTED_MODULE_5__["default"])();
+    (0,_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])();
 
 })
 })();

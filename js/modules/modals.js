@@ -53,4 +53,4 @@ function modals() {
 
 }
 
-module.exports = modals; 
+export default modals; 
